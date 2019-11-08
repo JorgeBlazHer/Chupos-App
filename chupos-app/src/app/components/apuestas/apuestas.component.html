@@ -1,126 +1,128 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="#">Chupos App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 </nav>
 
-<main role="main" class="container">
-    <div class="jumbotron">
-        <h1>Generar apuesta</h1>
-        <form>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="per1">Persona 1</label>
-                    <input type="text" class="form-control" id="per1" placeholder="Nombre persona 1" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="gana1">Persona 1 gana: </label>
-                    <input type="text" class="form-control" id="gana1" placeholder="Persona 1 gana">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="per2">Persona 2</label>
-                    <input type="text" class="form-control" id="per2" placeholder="Nombre persona 2" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="gana2">Persona 2 gana: </label>
-                    <input type="text" class="form-control" id="gana2" placeholder="Persona 2 gana">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-            </div>
-            <label for="descripción">Descripción: </label>
-            <textarea class="form-control" id="descripción" placeholder="Descripción de la apuesta" required></textarea>
-            <br>
-            <div class="form-row">
-                <div class="col-md-4">
-                    <label>Fecha final:</label>
-                    <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control">
-                </div>
-            </div>
-            <br>
-            <div class="form-row">
-                <div class="col-md-4">
-                    <label for="pass">Contraseña para cerrar o borrar:</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Password">
-                </div>
-                <div class="col-md-4">
-                    <label for="pass2">Confirmar contraseña: </label>
-                    <input type="password" class="form-control" id="pass2" placeholder="Password">
-                </div>
-            </div>
-            <br>
-
-
-            <button class="btn btn-primary" type="submit">crear</button>
-        </form>
-    </div>
-</main>
-
 <div class="container">
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Generar apuesta</h1>
+            <form>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="per1">Persona 1</label>
+                        <input type="text" class="form-control" id="per1" placeholder="Nombre persona 1" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="gana1">Persona 1 gana: </label>
+                        <input type="text" class="form-control" id="gana1" placeholder="Persona 1 gana">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="per2">Persona 2</label>
+                        <input type="text" class="form-control" id="per2" placeholder="Nombre persona 2" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="gana2">Persona 2 gana: </label>
+                        <input type="text" class="form-control" id="gana2" placeholder="Persona 2 gana">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <label for="descripción">Descripción: </label>
+                <textarea class="form-control" id="descripción" placeholder="Descripción de la apuesta"
+                    required></textarea>
+                <br>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label>Fecha final:</label>
+                        <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label for="pass">Contraseña para cerrar o borrar:</label>
+                        <input type="password" class="form-control" id="pass" placeholder="Password">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="pass2">Confirmar contraseña: </label>
+                        <input type="password" class="form-control" id="pass2" placeholder="Password">
+                    </div>
+                </div>
+                <br>
+
+
+                <button class="btn btn-primary" type="submit">crear</button>
+            </form>
+        </div>
+    </main>
+
+
     <h1>Apuestas abiertas</h1>
-    <table class="table ">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Participante 1</th>
-                <th scope="col">Participante 2</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Fecha fin</th>
-                <th scope="col">Cerrar</th>
-                <th scope="col">Contraseña para cerrar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Villar</td>
-                <td>Adrián</td>
-                <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
-                <td>31-12-2019</td>
-                <td><button class="btn btn-danger">Cerrar</button></td>
-                <td><input type="password" class="form-control" id="passCerrar" placeholder="Password"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Participante 1</th>
+                    <th scope="col">Participante 2</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Fecha fin</th>
+                    <th scope="col">Cerrar</th>
+                    <th scope="col">Contraseña para cerrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Villar</td>
+                    <td>Adrián</td>
+                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
+                    <td>31-12-2019</td>
+                    <td><button class="btn btn-danger">Cerrar</button></td>
+                    <td><input type="password" class="form-control" id="passCerrar" placeholder="Password"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 
 
 
     <h1>Apuestas cerradas</h1>
-    <table class="table ">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Participante 1</th>
-                <th scope="col">Participante 2</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Ganador</th>
-                <th scope="col">Fecha fin</th>
-                <th scope="col">Pagado?</th>
-                <th scope="col">Contraseña para pagar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Villar</td>
-                <td>Adrián</td>
-                <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
-                <td>Villar</td>
-                <td>31-12-2019</td>
-                <td><button class="btn btn-success">Pagar</button></td>
-                <td><input type="password" class="form-control" id="passPagar" placeholder="Password"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Participante 1</th>
+                    <th scope="col">Participante 2</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Ganador</th>
+                    <th scope="col">Fecha fin</th>
+                    <th scope="col">Pagado?</th>
+                    <th scope="col">Contraseña para pagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Villar</td>
+                    <td>Adrián</td>
+                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
+                    <td>Villar</td>
+                    <td>31-12-2019</td>
+                    <td><button class="btn btn-success">Pagar</button></td>
+                    <td><input type="password" class="form-control" id="passPagar" placeholder="Password"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
