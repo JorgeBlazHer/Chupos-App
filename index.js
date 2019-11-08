@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, './chupos-app/dist/chupos-app')));
-app.use('/', express.static(path.join(__dirname, './chupos-app/dist/chupos-app')));
+app.use(express.static(path.join(__dirname, './dist/chupos-app')));
+app.use('/', express.static(path.join(__dirname, './dist/chupos-app')));
 app.use('/api', employeeRoute)
 
 // Create port
