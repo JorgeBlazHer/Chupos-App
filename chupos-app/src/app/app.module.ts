@@ -5,11 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApuestasComponent } from './components/apuestas/apuestas.component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'inicio' },
-  { path: 'inicio', component: ApuestasComponent }
+  { path: '', pathMatch: 'full', component: ApuestasComponent }
 ];
 
 
@@ -20,7 +19,8 @@ const routes: Routes = [
   ],
   imports: [RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
