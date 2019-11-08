@@ -6,18 +6,18 @@
     <main role="main" class="container">
         <div class="jumbotron">
             <h1>Generar apuesta</h1>
-            <form>
+            <form [formGroup]="apuestaForm" (ngSubmit)="onSubmit()" oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="per1">Persona 1</label>
-                        <input type="text" class="form-control" id="per1" placeholder="Nombre persona 1" required>
+                        <label for="actor1">Persona 1</label>
+                        <input type="text" class="form-control" formControlName="actor1" id="actor1" placeholder="Nombre persona 1" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="gana1">Persona 1 gana: </label>
-                        <input type="text" class="form-control" id="gana1" placeholder="Persona 1 gana">
+                        <label for="ganaActor1">Persona 1 gana: </label>
+                        <input type="text" class="form-control" formControlName="ganaActor1"  id="ganaActor1" placeholder="Persona 1 gana">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -25,39 +25,39 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="per2">Persona 2</label>
-                        <input type="text" class="form-control" id="per2" placeholder="Nombre persona 2" required>
+                        <label for="actor2">Persona 2</label>
+                        <input type="text" class="form-control" formControlName="actor2" id="actor2" placeholder="Nombre persona 2" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="gana2">Persona 2 gana: </label>
-                        <input type="text" class="form-control" id="gana2" placeholder="Persona 2 gana">
+                        <label for="ganaActor2">Persona 2 gana: </label>
+                        <input type="text" class="form-control" formControlName="ganaActor2" id="ganaActor2" placeholder="Persona 2 gana">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                 </div>
                 <label for="descripción">Descripción: </label>
-                <textarea class="form-control" id="descripción" placeholder="Descripción de la apuesta"
+                <textarea class="form-control" formControlName="descripcion" id="descripción" placeholder="Descripción de la apuesta"
                     required></textarea>
                 <br>
                 <div class="form-row">
                     <div class="col-md-4">
                         <label>Fecha final:</label>
-                        <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control">
+                        <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" formControlName="fechaFin">
                     </div>
                 </div>
                 <br>
                 <div class="form-row">
                     <div class="col-md-4">
                         <label for="pass">Contraseña para cerrar o borrar:</label>
-                        <input type="password" class="form-control" id="pass" placeholder="Password">
+                        <input type="password" class="form-control" formControlName="pass" id="pass" placeholder="Password" name="up" required>
                     </div>
                     <div class="col-md-4">
                         <label for="pass2">Confirmar contraseña: </label>
-                        <input type="password" class="form-control" id="pass2" placeholder="Password">
+                        <input type="password" class="form-control" formControlName="pass2" id="pass2" placeholder="Password" name="up2" required>
                     </div>
                 </div>
                 <br>
