@@ -6,18 +6,21 @@
     <main role="main" class="container">
         <div class="jumbotron">
             <h1>Generar apuesta</h1>
-            <form [formGroup]="apuestaForm" (ngSubmit)="onSubmit()" oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+            <form [formGroup]="apuestaForm" (ngSubmit)="onSubmit()"
+                oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="actor1">Persona 1</label>
-                        <input type="text" class="form-control" formControlName="actor1" id="actor1" placeholder="Nombre persona 1" required>
+                        <input type="text" class="form-control" formControlName="actor1" id="actor1"
+                            placeholder="Nombre persona 1" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="ganaActor1">Persona 1 gana: </label>
-                        <input type="text" class="form-control" formControlName="ganaActor1"  id="ganaActor1" placeholder="Persona 1 gana">
+                        <input type="text" class="form-control" formControlName="ganaActor1" id="ganaActor1"
+                            placeholder="Persona 1 gana">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -26,38 +29,43 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="actor2">Persona 2</label>
-                        <input type="text" class="form-control" formControlName="actor2" id="actor2" placeholder="Nombre persona 2" required>
+                        <input type="text" class="form-control" formControlName="actor2" id="actor2"
+                            placeholder="Nombre persona 2" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="ganaActor2">Persona 2 gana: </label>
-                        <input type="text" class="form-control" formControlName="ganaActor2" id="ganaActor2" placeholder="Persona 2 gana">
+                        <input type="text" class="form-control" formControlName="ganaActor2" id="ganaActor2"
+                            placeholder="Persona 2 gana">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                 </div>
                 <label for="descripción">Descripción: </label>
-                <textarea class="form-control" formControlName="descripcion" id="descripción" placeholder="Descripción de la apuesta"
-                    required></textarea>
+                <textarea class="form-control" formControlName="descripcion" id="descripción"
+                    placeholder="Descripción de la apuesta" required></textarea>
                 <br>
                 <div class="form-row">
                     <div class="col-md-4">
                         <label>Fecha final:</label>
-                        <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" formControlName="fechaFin">
+                        <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control"
+                            formControlName="fechaFin">
                     </div>
                 </div>
                 <br>
                 <div class="form-row">
                     <div class="col-md-4">
                         <label for="pass">Contraseña para cerrar o borrar:</label>
-                        <input type="password" class="form-control" formControlName="pass" id="pass" placeholder="Password" name="up" required>
+                        <input type="password" class="form-control" formControlName="pass" id="pass"
+                            placeholder="Password" name="up" required>
                     </div>
                     <div class="col-md-4">
                         <label for="pass2">Confirmar contraseña: </label>
-                        <input type="password" class="form-control" formControlName="pass2" id="pass2" placeholder="Password" name="up2" required>
+                        <input type="password" class="form-control" formControlName="pass2" id="pass2"
+                            placeholder="Password" name="up2" required>
                     </div>
                 </div>
                 <br>
@@ -79,7 +87,6 @@
                     <th scope="col">Descripción</th>
                     <th scope="col">Fecha fin</th>
                     <th scope="col">Cerrar</th>
-                    <th scope="col">Contraseña para cerrar</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,12 +95,57 @@
                     <td>Adrián</td>
                     <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
                     <td>31-12-2019</td>
-                    <td><button class="btn btn-danger">Cerrar</button></td>
-                    <td><input type="password" class="form-control" id="passCerrar" placeholder="Password"></td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cerrar
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!--
+                                <form [formGroup]="cerrarApuesta" (ngSubmit)="onSubmit()">
+                                    <input type="password" class="form-control" id="passCerrar" placeholder="Password">
+                                    <div class="dropdown-divider"></div>
+                                    <input type="text" class="form-control" formControlName="ganador" id="ganador"placeholder="Ganador">
+                                    <div class="dropdown-divider"></div>
+                                    <button class="btn btn-danger" type="button" id="buttonCerrar">Cerrar</button>
+                                </form>
+                                -->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Villar</td>
+                    <td>Adrián</td>
+                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
+                    <td>31-12-2019</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cerrar
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!--
+                                <form [formGroup]="cerrarApuesta" (ngSubmit)="onSubmit()">
+                                    <input type="password" class="form-control" id="passCerrar" placeholder="Password">
+                                    <div class="dropdown-divider"></div>
+                                    <input type="text" class="form-control" formControlName="ganador" id="ganador"placeholder="Ganador">
+                                    <div class="dropdown-divider"></div>
+                                    <button class="btn btn-danger" type="button" id="buttonCerrar">Cerrar</button>
+                                </form>
+                                -->
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+
 
 
 

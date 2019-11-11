@@ -39,7 +39,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-md navbar-dark bg-dark mb-4\">\n    <a class=\"navbar-brand\" href=\"#\">Chupos App</a>\n</nav>\n\n<div class=\"container\">\n    <main role=\"main\" class=\"container\">\n        <div class=\"jumbotron\">\n            <h1>Generar apuesta</h1>\n            <form>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"per1\">Persona 1</label>\n                        <input type=\"text\" class=\"form-control\" id=\"per1\" placeholder=\"Nombre persona 1\" required>\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"gana1\">Persona 1 gana: </label>\n                        <input type=\"text\" class=\"form-control\" id=\"gana1\" placeholder=\"Persona 1 gana\">\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"per2\">Persona 2</label>\n                        <input type=\"text\" class=\"form-control\" id=\"per2\" placeholder=\"Nombre persona 2\" required>\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"gana2\">Persona 2 gana: </label>\n                        <input type=\"text\" class=\"form-control\" id=\"gana2\" placeholder=\"Persona 2 gana\">\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                </div>\n                <label for=\"descripción\">Descripción: </label>\n                <textarea class=\"form-control\" id=\"descripción\" placeholder=\"Descripción de la apuesta\"\n                    required></textarea>\n                <br>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4\">\n                        <label>Fecha final:</label>\n                        <input type=\"date\" name=\"bday\" max=\"3000-12-31\" min=\"1000-01-01\" class=\"form-control\">\n                    </div>\n                </div>\n                <br>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4\">\n                        <label for=\"pass\">Contraseña para cerrar o borrar:</label>\n                        <input type=\"password\" class=\"form-control\" id=\"pass\" placeholder=\"Password\">\n                    </div>\n                    <div class=\"col-md-4\">\n                        <label for=\"pass2\">Confirmar contraseña: </label>\n                        <input type=\"password\" class=\"form-control\" id=\"pass2\" placeholder=\"Password\">\n                    </div>\n                </div>\n                <br>\n\n\n                <button class=\"btn btn-primary\" type=\"submit\">crear</button>\n            </form>\n        </div>\n    </main>\n\n\n    <h1>Apuestas abiertas</h1>\n    <div class=\"table-responsive\">\n        <table class=\"table \">\n            <thead class=\"thead-dark\">\n                <tr>\n                    <th scope=\"col\">Participante 1</th>\n                    <th scope=\"col\">Participante 2</th>\n                    <th scope=\"col\">Descripción</th>\n                    <th scope=\"col\">Fecha fin</th>\n                    <th scope=\"col\">Cerrar</th>\n                    <th scope=\"col\">Contraseña para cerrar</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>Villar</td>\n                    <td>Adrián</td>\n                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>\n                    <td>31-12-2019</td>\n                    <td><button class=\"btn btn-danger\">Cerrar</button></td>\n                    <td><input type=\"password\" class=\"form-control\" id=\"passCerrar\" placeholder=\"Password\"></td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n\n\n\n    <h1>Apuestas cerradas</h1>\n    <div class=\"table-responsive\">\n        <table class=\"table \">\n            <thead class=\"thead-dark\">\n                <tr>\n                    <th scope=\"col\">Participante 1</th>\n                    <th scope=\"col\">Participante 2</th>\n                    <th scope=\"col\">Descripción</th>\n                    <th scope=\"col\">Ganador</th>\n                    <th scope=\"col\">Fecha fin</th>\n                    <th scope=\"col\">Pagado?</th>\n                    <th scope=\"col\">Contraseña para pagar</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>Villar</td>\n                    <td>Adrián</td>\n                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>\n                    <td>Villar</td>\n                    <td>31-12-2019</td>\n                    <td><button class=\"btn btn-success\">Pagar</button></td>\n                    <td><input type=\"password\" class=\"form-control\" id=\"passPagar\" placeholder=\"Password\"></td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-md navbar-dark bg-dark mb-4\">\n    <a class=\"navbar-brand\" href=\"#\">Chupos App</a>\n</nav>\n\n<div class=\"container\">\n    <main role=\"main\" class=\"container\">\n        <div class=\"jumbotron\">\n            <h1>Generar apuesta</h1>\n            <form [formGroup]=\"apuestaForm\" (ngSubmit)=\"onSubmit()\"\n                oninput='up2.setCustomValidity(up2.value != up.value ? \"Passwords do not match.\" : \"\")'>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"actor1\">Persona 1</label>\n                        <input type=\"text\" class=\"form-control\" formControlName=\"actor1\" id=\"actor1\"\n                            placeholder=\"Nombre persona 1\" required>\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"ganaActor1\">Persona 1 gana: </label>\n                        <input type=\"text\" class=\"form-control\" formControlName=\"ganaActor1\" id=\"ganaActor1\"\n                            placeholder=\"Persona 1 gana\">\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"actor2\">Persona 2</label>\n                        <input type=\"text\" class=\"form-control\" formControlName=\"actor2\" id=\"actor2\"\n                            placeholder=\"Nombre persona 2\" required>\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                    <div class=\"col-md-4 mb-3\">\n                        <label for=\"ganaActor2\">Persona 2 gana: </label>\n                        <input type=\"text\" class=\"form-control\" formControlName=\"ganaActor2\" id=\"ganaActor2\"\n                            placeholder=\"Persona 2 gana\">\n                        <div class=\"valid-feedback\">\n                            Looks good!\n                        </div>\n                    </div>\n                </div>\n                <label for=\"descripción\">Descripción: </label>\n                <textarea class=\"form-control\" formControlName=\"descripcion\" id=\"descripción\"\n                    placeholder=\"Descripción de la apuesta\" required></textarea>\n                <br>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4\">\n                        <label>Fecha final:</label>\n                        <input type=\"date\" name=\"bday\" max=\"3000-12-31\" min=\"1000-01-01\" class=\"form-control\"\n                            formControlName=\"fechaFin\">\n                    </div>\n                </div>\n                <br>\n                <div class=\"form-row\">\n                    <div class=\"col-md-4\">\n                        <label for=\"pass\">Contraseña para cerrar o borrar:</label>\n                        <input type=\"password\" class=\"form-control\" formControlName=\"pass\" id=\"pass\"\n                            placeholder=\"Password\" name=\"up\" required>\n                    </div>\n                    <div class=\"col-md-4\">\n                        <label for=\"pass2\">Confirmar contraseña: </label>\n                        <input type=\"password\" class=\"form-control\" formControlName=\"pass2\" id=\"pass2\"\n                            placeholder=\"Password\" name=\"up2\" required>\n                    </div>\n                </div>\n                <br>\n\n\n                <button class=\"btn btn-primary\" type=\"submit\">crear</button>\n            </form>\n        </div>\n    </main>\n\n\n    <h1>Apuestas abiertas</h1>\n    <div class=\"table-responsive\">\n        <table class=\"table \">\n            <thead class=\"thead-dark\">\n                <tr>\n                    <th scope=\"col\">Participante 1</th>\n                    <th scope=\"col\">Participante 2</th>\n                    <th scope=\"col\">Descripción</th>\n                    <th scope=\"col\">Fecha fin</th>\n                    <th scope=\"col\">Cerrar</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>Villar</td>\n                    <td>Adrián</td>\n                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>\n                    <td>31-12-2019</td>\n                    <td>\n                        <div class=\"dropdown\">\n                            <button class=\"btn btn-danger dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\"\n                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                Cerrar\n                            </button>\n                            <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                                <!--\n                                <form [formGroup]=\"cerrarApuesta\" (ngSubmit)=\"onSubmit()\">\n                                    <input type=\"password\" class=\"form-control\" id=\"passCerrar\" placeholder=\"Password\">\n                                    <div class=\"dropdown-divider\"></div>\n                                    <input type=\"text\" class=\"form-control\" formControlName=\"ganador\" id=\"ganador\"placeholder=\"Ganador\">\n                                    <div class=\"dropdown-divider\"></div>\n                                    <button class=\"btn btn-danger\" type=\"button\" id=\"buttonCerrar\">Cerrar</button>\n                                </form>\n                                -->\n                            </div>\n                        </div>\n                    </td>\n                </tr>\n\n                <tr>\n                    <td>Villar</td>\n                    <td>Adrián</td>\n                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>\n                    <td>31-12-2019</td>\n                    <td>\n                        <div class=\"dropdown\">\n                            <button class=\"btn btn-danger dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\"\n                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                Cerrar\n                            </button>\n                            <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                                <!--\n                                <form [formGroup]=\"cerrarApuesta\" (ngSubmit)=\"onSubmit()\">\n                                    <input type=\"password\" class=\"form-control\" id=\"passCerrar\" placeholder=\"Password\">\n                                    <div class=\"dropdown-divider\"></div>\n                                    <input type=\"text\" class=\"form-control\" formControlName=\"ganador\" id=\"ganador\"placeholder=\"Ganador\">\n                                    <div class=\"dropdown-divider\"></div>\n                                    <button class=\"btn btn-danger\" type=\"button\" id=\"buttonCerrar\">Cerrar</button>\n                                </form>\n                                -->\n                            </div>\n                        </div>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n\n\n\n\n\n    <h1>Apuestas cerradas</h1>\n    <div class=\"table-responsive\">\n        <table class=\"table \">\n            <thead class=\"thead-dark\">\n                <tr>\n                    <th scope=\"col\">Participante 1</th>\n                    <th scope=\"col\">Participante 2</th>\n                    <th scope=\"col\">Descripción</th>\n                    <th scope=\"col\">Ganador</th>\n                    <th scope=\"col\">Fecha fin</th>\n                    <th scope=\"col\">Pagado?</th>\n                    <th scope=\"col\">Contraseña para pagar</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>Villar</td>\n                    <td>Adrián</td>\n                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>\n                    <td>Villar</td>\n                    <td>31-12-2019</td>\n                    <td><button class=\"btn btn-success\">Pagar</button></td>\n                    <td><input type=\"password\" class=\"form-control\" id=\"passPagar\" placeholder=\"Password\"></td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -422,6 +422,8 @@
             /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
             /* harmony import */ var _components_apuestas_apuestas_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/apuestas/apuestas.component */ "./src/app/components/apuestas/apuestas.component.ts");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./service/api.service */ "./src/app/service/api.service.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             var routes = [
                 { path: '', pathMatch: 'full', component: _components_apuestas_apuestas_component__WEBPACK_IMPORTED_MODULE_6__["ApuestasComponent"] }
             ];
@@ -439,9 +441,11 @@
                     imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(routes),
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                         _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                        _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"]
+                        _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]
                     ],
-                    providers: [],
+                    providers: [_service_api_service__WEBPACK_IMPORTED_MODULE_8__["ApiService"]],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
                 })
             ], AppModule);
@@ -469,13 +473,68 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApuestasComponent", function () { return ApuestasComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../service/api.service */ "./src/app/service/api.service.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var ApuestasComponent = /** @class */ (function () {
-                function ApuestasComponent() {
+                function ApuestasComponent(fb, router, ngZone, apiService) {
+                    this.fb = fb;
+                    this.router = router;
+                    this.ngZone = ngZone;
+                    this.apiService = apiService;
+                    this.mainForm();
                 }
                 ApuestasComponent.prototype.ngOnInit = function () {
                 };
+                ApuestasComponent.prototype.mainForm = function () {
+                    this.cerrarApuesta = this.fb.group({
+                        passCerrar: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        ganador: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
+                    });
+                    this.apuestaForm = this.fb.group({
+                        actor1: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        ganaActor1: [''],
+                        actor2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        ganaActor2: [''],
+                        descripcion: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        fechaFin: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        pass: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+                        pass2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
+                    });
+                };
+                Object.defineProperty(ApuestasComponent.prototype, "myForm", {
+                    get: function () {
+                        return this.apuestaForm.controls;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                ApuestasComponent.prototype.onSubmit = function () {
+                    var _this = this;
+                    if (!this.apuestaForm.valid) {
+                        return false;
+                    }
+                    else if (this.apuestaForm.value.pass != this.apuestaForm.value.pass2) {
+                        alert("Contraseñas iguales!!!!");
+                    }
+                    else {
+                        this.apiService.createApuesta(this.apuestaForm.value).subscribe(function (res) {
+                            console.log('Employee successfully created!');
+                            alert("Apuesta creada");
+                            _this.ngZone.run(function () { return _this.router.navigateByUrl('/'); });
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                };
                 return ApuestasComponent;
             }());
+            ApuestasComponent.ctorParameters = function () { return [
+                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+                { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+                { type: _service_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
+            ]; };
             ApuestasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-apuestas',
@@ -483,6 +542,88 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./apuestas.component.css */ "./src/app/components/apuestas/apuestas.component.css")).default]
                 })
             ], ApuestasComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/service/api.service.ts": 
+        /*!****************************************!*\
+          !*** ./src/app/service/api.service.ts ***!
+          \****************************************/
+        /*! exports provided: ApiService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function () { return ApiService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            var ApiService = /** @class */ (function () {
+                function ApiService(http) {
+                    this.http = http;
+                    this.baseUri = 'http://chupos-app.herokuapp.com/api';
+                    //baseUri:string = 'localhost:4000/api';
+                    this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Content-Type', 'application/json');
+                }
+                // Create
+                ApiService.prototype.createApuesta = function (data) {
+                    var url = this.baseUri + "/create";
+                    return this.http.post(url, data)
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorMgmt));
+                };
+                // Get all Apuestas
+                ApiService.prototype.getApuestas = function () {
+                    return this.http.get("" + this.baseUri);
+                };
+                // Get all Apuestas activas
+                ApiService.prototype.getApuestasActivas = function () {
+                    return this.http.get(this.baseUri + "/noFinalizadas");
+                };
+                // Get all Apuestas finalizadas
+                ApiService.prototype.getApuestasFinalizadas = function () {
+                    return this.http.get(this.baseUri + "/finalizadas");
+                };
+                // Get Apuesta
+                ApiService.prototype.getApuesta = function (id) {
+                    var url = this.baseUri + "/read/" + id;
+                    return this.http.get(url, { headers: this.headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) {
+                        return res || {};
+                    }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorMgmt));
+                };
+                // Update Apuesta
+                ApiService.prototype.updateApuesta = function (id, data) {
+                    var url = this.baseUri + "/update/" + id;
+                    return this.http.put(url, data, { headers: this.headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorMgmt));
+                };
+                // Delete Apuesta
+                ApiService.prototype.deleteApuesta = function (id) {
+                    var url = this.baseUri + "/delete/" + id;
+                    return this.http.delete(url, { headers: this.headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorMgmt));
+                };
+                // Error handling 
+                ApiService.prototype.errorMgmt = function (error) {
+                    var errorMessage = '';
+                    if (error.error instanceof ErrorEvent) {
+                        // Get client-side error
+                        errorMessage = error.error.message;
+                    }
+                    else {
+                        // Get server-side error
+                        errorMessage = "Error Code: " + error.status + "\nMessage: " + error.message;
+                    }
+                    console.log(errorMessage);
+                    return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMessage);
+                };
+                return ApiService;
+            }());
+            ApiService.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+            ]; };
+            ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], ApiService);
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 
