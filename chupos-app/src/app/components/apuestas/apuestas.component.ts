@@ -1,7 +1,7 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ApiService } from './../../service/api.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-apuestas',
@@ -12,24 +12,73 @@ export class ApuestasComponent implements OnInit {
 
 
   apuestaForm: FormGroup;
-  cerrarApuesta: FormGroup;
+  apuestasAbiertas: Object;
+  apuestasCerradas: Object;
+
 
   constructor(public fb: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
     private apiService: ApiService) {
-      this.mainForm();
+    
   }
 
   ngOnInit() {
+    this.mainForm();
+    this.apiService.getApuestasActivas().subscribe(
+      (res) => {
+        this.apuestasAbiertas = res;
+
+      }, (error) => {
+        console.log(error);
+      });
+
+
+    this.apiService.getApuestasFinalizadas().subscribe(
+      (res) => {
+        this.apuestasCerradas = res;
+      }, (error) => {
+        console.log(error);
+      });
+  }
+
+  cerrar(i) {
+    if (this.apuestasAbiertas[i].passCerrar === this.apuestasAbiertas[i].pass) {
+      this.apuestasAbiertas[i].fin = true;
+      this.apiService.updateApuesta(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i]).subscribe(
+        (res) => {
+          this.apuestasAbiertas = res;
+          this.ngOnInit();
+
+        }, (error) => {
+          console.log(error);
+        });
+
+    }
+    else{
+      alert("Contraseña mal.")
+    }
+
+  }
+
+  pagar(i) {
+    if (this.apuestasCerradas[i].passPagar === this.apuestasCerradas[i].pass) {
+      this.apuestasCerradas[i].pagada = true;
+      this.apiService.updateApuesta(this.apuestasCerradas[i]._id, this.apuestasCerradas[i]).subscribe(
+        (res) => {
+          this.ngOnInit();
+
+        }, (error) => {
+          console.log(error);
+        });
+
+    }
+    else{
+      alert("Contraseña mal.")
+    }
+
   }
 
 
   mainForm() {
-    this.cerrarApuesta = this.fb.group({
-      passCerrar: ['', [Validators.required]],
-      ganador: ['', [Validators.required]]
-    });
     this.apuestaForm = this.fb.group({
       actor1: ['', [Validators.required]],
       ganaActor1: [''],
@@ -41,7 +90,7 @@ export class ApuestasComponent implements OnInit {
       pass2: ['', [Validators.required]]
     })
   }
- 
+
   get myForm() {
     return this.apuestaForm.controls;
   }
@@ -49,20 +98,19 @@ export class ApuestasComponent implements OnInit {
   onSubmit() {
     if (!this.apuestaForm.valid) {
       return false;
-    } 
-    else if(this.apuestaForm.value.pass!=this.apuestaForm.value.pass2){
+    }
+    else if (this.apuestaForm.value.pass != this.apuestaForm.value.pass2) {
       alert("Contraseñas iguales!!!!");
     }
     else {
       this.apiService.createApuesta(this.apuestaForm.value).subscribe(
         (res) => {
           console.log('Employee successfully created!')
-          alert("Apuesta creada");
-          this.ngZone.run(() => this.router.navigateByUrl('/'))
+
+          this.ngOnInit();
         }, (error) => {
           console.log(error);
         });
     }
   }
-
 }

@@ -21,21 +21,26 @@ let Apuesta = new Schema({
         type: String,
         required: true
     },
-    fechaInicial:{
+    fechaFin:{
         type: Date,
         required: true
     },
-    fechaFin:{
-        type: Date
-    },
     fin: {
-        type: Boolean
+        type: Boolean,
+        default: false,
+        required: true
     },
     ganadaPor: {
         type: String
     },
     pagada:{
-        type: Boolean
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    pass: {
+        type: String,
+        required: true
     }
 });
 

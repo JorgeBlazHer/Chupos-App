@@ -90,11 +90,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Villar</td>
-                    <td>Adrián</td>
-                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
-                    <td>31-12-2019</td>
+                <tr *ngFor="let ap of apuestasAbiertas; let i=index">
+                    <td>{{ap.actor1}}</td>
+                    <td>{{ap.actor2}}</td>
+                    <td>{{ap.descripcion}}</td>
+                    <td>{{ap.fechaFin | date:fullDate}}</td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -102,41 +102,14 @@
                                 Cerrar
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <!--
-                                <form [formGroup]="cerrarApuesta" (ngSubmit)="onSubmit()">
-                                    <input type="password" class="form-control" id="passCerrar" placeholder="Password">
-                                    <div class="dropdown-divider"></div>
-                                    <input type="text" class="form-control" formControlName="ganador" id="ganador"placeholder="Ganador">
-                                    <div class="dropdown-divider"></div>
-                                    <button class="btn btn-danger" type="button" id="buttonCerrar">Cerrar</button>
-                                </form>
-                                -->
-                            </div>
-                        </div>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>Villar</td>
-                    <td>Adrián</td>
-                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
-                    <td>31-12-2019</td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cerrar
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <!--
-                                <form [formGroup]="cerrarApuesta" (ngSubmit)="onSubmit()">
-                                    <input type="password" class="form-control" id="passCerrar" placeholder="Password">
-                                    <div class="dropdown-divider"></div>
-                                    <input type="text" class="form-control" formControlName="ganador" id="ganador"placeholder="Ganador">
-                                    <div class="dropdown-divider"></div>
-                                    <button class="btn btn-danger" type="button" id="buttonCerrar">Cerrar</button>
-                                </form>
-                                -->
+                                <input type="password" [(ngModel)]="ap.passCerrar" placeholder="Password">
+                                <div class="dropdown-divider"></div>
+                                <input type="text" placeholder="Ganador" [(ngModel)]="ap.ganadaPor">
+                                <div class="dropdown-divider"></div>
+                                <button class="btn btn-danger" type="button" (click)="cerrar(i)"
+                                    id="buttonCerrar">Cerrar</button>
+
                             </div>
                         </div>
                     </td>
@@ -165,14 +138,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Villar</td>
-                    <td>Adrián</td>
-                    <td>Si Adrián se compra el fifa le debe un chupo a Villar.</td>
-                    <td>Villar</td>
-                    <td>31-12-2019</td>
-                    <td><button class="btn btn-success">Pagar</button></td>
-                    <td><input type="password" class="form-control" id="passPagar" placeholder="Password"></td>
+                <tr *ngFor="let ap of apuestasCerradas; let u=index">
+                    <td>{{ap.actor1}}</td>
+                    <td>{{ap.actor2}}</td>
+                    <td>{{ap.descripcion}}</td>
+                    <td>{{ap.ganadoPor}}</td>
+                    <td>{{ap.fechaFin | date:fullDate}}</td>
+                    <td><button [disabled]="ap.pagada" (click)="pagar(u)" class="btn btn-success">Pagar</button></td>
+                    <td>
+                        <div *ngIf="!ap.pagada; else pagadito">
+                            <input type="password" [(ngModel)]="ap.passPagar" class="form-control" id="passPagar"
+                                placeholder="Password">
+                        </div>
+                        <ng-template #pagadito>
+                            Pagaditaaaa
+                        </ng-template>
+                    </td>
                 </tr>
             </tbody>
         </table>
