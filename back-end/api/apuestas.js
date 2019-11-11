@@ -9,7 +9,7 @@ let Apuesta = require('../database/models/apuesta');
 apuestaRoute.route('/create').post((req, res, next) => {
     Apuesta.create(req.body, (error, data) => {
         if (error) {
-            return next(error)
+            res.json(error)
         } else {
             res.json(data)
         }
@@ -21,7 +21,7 @@ apuestaRoute.route('/').get((req, res) => {
     console.log("llego");
     Apuesta.find((error, data) => {
         if (error) {
-            return next(error)
+            res.json(error)
         } else {
             res.json(data)
         }
@@ -33,7 +33,7 @@ apuestaRoute.route('/').get((req, res) => {
 apuestaRoute.route('/finalizadas').get((req, res) => {
     Apuesta.find({ fin: true }, (error, data) => {
         if (error) {
-            return next(error)
+            res.json(error)
         } else {
             res.json(data)
         }
@@ -44,7 +44,7 @@ apuestaRoute.route('/finalizadas').get((req, res) => {
 apuestaRoute.route('/noFinalizadas').get((req, res) => {
     Apuesta.find({ fin: false }, (error, data) => {
         if (error) {
-            return next(error)
+            res.json(error)
         } else {
             res.json(data)
         }
@@ -55,7 +55,7 @@ apuestaRoute.route('/noFinalizadas').get((req, res) => {
 apuestaRoute.route('/read/:id').get((req, res) => {
     Apuesta.findById(req.params.id, (error, data) => {
         if (error) {
-            return next(error)
+            res.json(error)
         } else {
             res.json(data)
         }
@@ -69,7 +69,7 @@ apuestaRoute.route('/update/:id').put((req, res, next) => {
         $set: req.body
     }, (error, data) => {
         if (error) {
-            return next(error);
+            res.json(error);
             console.log(error)
         } else {
             res.json(data)
@@ -82,7 +82,7 @@ apuestaRoute.route('/update/:id').put((req, res, next) => {
 apuestaRoute.route('/delete/:id').delete((req, res, next) => {
     Apuesta.findOneAndRemove(req.params.id, (error, data) => {
         if (error) {
-            return next(error);
+            res.json(error);
         } else {
             res.status(200).json({
                 msg: data
