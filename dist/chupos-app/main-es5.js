@@ -591,8 +591,8 @@
             var ApiService = /** @class */ (function () {
                 function ApiService(http) {
                     this.http = http;
-                    //baseUri:string = 'http://chupos-app.herokuapp.com/api';
-                    this.baseUri = 'http://localhost:4000/api';
+                    this.baseUri = 'http://chupos-app.herokuapp.com/api';
+                    //baseUri:string = 'http://localhost:4000/api';
                     this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Content-Type', 'application/json');
                 }
                 // Create
