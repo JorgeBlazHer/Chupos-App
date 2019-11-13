@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class ApiService {
 
 
-  baseUri:string = 'http://chupos-app.herokuapp.com/api';
+  baseUri:string = 'https://chupos-app.herokuapp.com/api';
   //baseUri:string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
