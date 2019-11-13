@@ -560,7 +560,7 @@ __webpack_require__.r(__webpack_exports__);
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
-        this.baseUri = 'http://chupos-app.herokuapp.com/api';
+        this.baseUri = 'https://chupos-app.herokuapp.com/api';
         //baseUri:string = 'http://localhost:4000/api';
         this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Content-Type', 'application/json');
     }
