@@ -18,7 +18,7 @@ export class ApuestasComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
     private apiService: ApiService) {
-    
+
   }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class ApuestasComponent implements OnInit {
         });
 
     }
-    else{
+    else {
       alert("Contraseña mal.")
     }
 
@@ -69,12 +69,7 @@ export class ApuestasComponent implements OnInit {
         }, (error) => {
           console.log(error);
         });
-
     }
-    else{
-      alert("Contraseña mal.")
-    }
-
   }
 
 
@@ -91,8 +86,17 @@ export class ApuestasComponent implements OnInit {
     })
   }
 
-  get myForm() {
-    return this.apuestaForm.controls;
+  esValido() {
+    return !this.apuestaForm.controls.actor1.invalid &&
+      !this.apuestaForm.controls.actor2.invalid &&
+      !this.apuestaForm.controls.descripcion.invalid &&
+      !this.apuestaForm.controls.fechaFin.invalid &&
+      !this.apuestaForm.controls.pass.invalid &&
+      !this.apuestaForm.controls.pass2.invalid;
+  }
+
+  contrasenasIguales(){
+    return this.apuestaForm.controls.pass.value===this.apuestaForm.controls.pass2.value;
   }
 
   onSubmit() {
@@ -105,8 +109,6 @@ export class ApuestasComponent implements OnInit {
     else {
       this.apiService.createApuesta(this.apuestaForm.value).subscribe(
         (res) => {
-          console.log('Employee successfully created!')
-
           this.ngOnInit();
         }, (error) => {
           console.log(error);
