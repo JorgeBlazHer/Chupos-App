@@ -70,6 +70,9 @@ export class ApuestasComponent implements OnInit {
           console.log(error);
         });
     }
+    else{
+      alert("Contraseña mal.")
+    }
   }
 
 
