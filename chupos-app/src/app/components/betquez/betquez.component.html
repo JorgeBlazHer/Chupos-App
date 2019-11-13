@@ -1,0 +1,84 @@
+<div class="container">
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Generar apuesta global</h1>
+            <form [formGroup]="apuestaGForm" (ngSubmit)="onSubmit()">
+                <label for="descripción">Descripción* </label>
+                <textarea class="form-control" formControlName="descripcion" id="descripción"
+                    placeholder="Descripción de la apuesta" required></textarea>
+                <br>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label>Fecha final*</label>
+                        <input type="date" name="bday" max="3000-12-31" min="2019-01-01" class="form-control"
+                            formControlName="fechaFin">
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label for="pass">Contraseña para cerrar o borrar*</label>
+                        <input type="password" class="form-control" formControlName="pass" id="pass"
+                            placeholder="Password" name="up" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="pass2">Confirmar contraseña* </label>
+                        <input type="password" class="form-control" formControlName="pass2" id="pass2"
+                            placeholder="Password" name="up2" required>
+                    </div>
+                </div>
+                <br>
+
+                <div *ngIf="!esValido()" class="alert alert-danger">
+
+                    Tienes que rellenar los campos con el asterisco.
+
+                </div>
+                <div *ngIf="esValido() && !contrasenasIguales()" class="alert alert-danger">
+
+                    La pass no es la misma.
+
+                </div>
+
+                <button class="btn btn-primary" [disabled]="!esValido() || !contrasenasIguales()"
+                    type="submit">Crear</button>
+
+
+
+            </form>
+        </div>
+
+    </main>
+
+
+
+    <h1>Apuestas</h1>
+    <div class="table-responsive">
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Fecha fin</th>
+                    <th scope="col">Cerrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ap of apuestasAbiertas; let i=index">
+                    <td>{{ap.descripcion}}</td>
+                    <td>{{ap.fechaFin | date:fullDate}}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-primary" type="button" [routerLink]="['/betquez', ap._id]">
+                                Ver
+                            </button>
+                            
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

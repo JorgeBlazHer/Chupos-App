@@ -10,3 +10,21 @@ export class Apuesta {
     pagada: boolean;
     contraseña: string;
 }
+
+export class Persona{
+    persona: String;
+    descripcion: String;
+    constructor(persona: string, descripcion: string) {
+        this.persona = persona;
+        this.descripcion=descripcion;
+    }
+}
+
+
+export class ApuestaPP{
+    _id: String;
+    apuestas: [Persona];
+    descripcion: String;
+    FechaFin: String;
+    fin: boolean;
+}

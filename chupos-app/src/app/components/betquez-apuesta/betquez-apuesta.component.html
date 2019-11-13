@@ -1,0 +1,59 @@
+<div class="container">
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Apuesta</h1>
+            <h3>{{apuesta.descripcion}}</h3>
+            <div *ngIf="!apuesta.fin">
+                <h4>Acaba: {{apuesta.fechaFin | date:fullDate}}</h4>
+                <form [formGroup]=" apuestaForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="persona">Persona 1*</label>
+                            <input type="text" class="form-control" formControlName="persona" id="persona"
+                                placeholder="Nombre persona" required>
+                        </div>
+                    </div>
+                    <label for="descripción">Descripción* </label>
+                    <textarea class="form-control" formControlName="descripcion" id="descripción"
+                        placeholder="Descripción de la apuesta" required></textarea>
+
+                    <br>
+                    <button class="btn btn-primary" [disabled]="" type="submit">Crear</button>
+                    <br>
+                </form>
+
+                <form [formGroup]="finForm" (ngSubmit)="cerrar()">
+                    <br>
+                    <input type="text" class="form-control" formControlName="ganadoPor" id="ganador"
+                        placeholder="Nombre persona" required>
+
+                    <input type="password" class="form-control" formControlName="pass" id="password"
+                        placeholder="Password" required>
+                    <br>
+                    <button class="btn btn-danger" [disabled]="" type="submit">Cerrar</button>
+                </form>
+            </div>
+            <div *ngIf="apuesta.fin">
+                <h4>Acabada</h4>
+                <h4>Ganada por: {{apuesta.ganadaPor}} </h4>
+            </div>
+        </div>
+    </main>
+    <h1>Apuestas por persona</h1>
+    <div class="table-responsive">
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Participante</th>
+                    <th scope="col">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ap of apuesta.apuestas; let i=index">
+                    <td>{{ap.persona}}</td>
+                    <td>{{ap.descripcion}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
