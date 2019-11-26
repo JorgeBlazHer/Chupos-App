@@ -4,28 +4,10 @@
             <h1>Apuesta</h1>
             <h3>{{apuesta.descripcion}}</h3>
             <div *ngIf="!apuesta.fin">
-                <h4>Acaba: {{apuesta.FechaFin | date:'d MMMM y'}}</h4>
-                <form [formGroup]=" apuestaForm" (ngSubmit)="onSubmit()">
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <label for="persona">Persona 1*</label>
-                            <input type="text" class="form-control" formControlName="persona" id="persona"
-                                placeholder="Nombre persona" required>
-                        </div>
-                    </div>
-                    <label for="descripción">Descripción* </label>
-                    <textarea class="form-control" formControlName="descripcion" id="descripción"
-                        placeholder="Descripción de la apuesta" required></textarea>
-
-                    <br>
-                    <button class="btn btn-primary" [disabled]="" type="submit">Crear</button>
-                    <br>
-                </form>
-
                 <form [formGroup]="finForm" (ngSubmit)="cerrar()">
                     <br>
-                    <input type="text" class="form-control" formControlName="ganadoPor" id="ganador"
-                        placeholder="Nombre persona" required>
+                    <input type="text" class="form-control" formControlName="ganadaPor" id="ganador"
+                        placeholder="Nombre ganador" required>
 
                     <input type="password" class="form-control" formControlName="pass" id="password"
                         placeholder="Password" required>
@@ -34,9 +16,28 @@
                 </form>
             </div>
             <div *ngIf="apuesta.fin">
-                <h4>Acabada</h4>
+                <h4>Cerrada</h4>
                 <h4>Ganada por: {{apuesta.ganadaPor}} </h4>
             </div>
+        </div>
+
+        <div *ngIf="!apuesta.fin" class="jumbotron">
+            <h2>Añadir</h2>
+            <form [formGroup]=" apuestaForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="persona">Persona 1*</label>
+                        <input type="text" class="form-control" formControlName="persona" id="persona"
+                            placeholder="Nombre persona" required>
+                    </div>
+                </div>
+                <label for="descripción">Descripción* </label>
+                <textarea class="form-control" formControlName="descripcion" id="descripción"
+                    placeholder="Descripción de la apuesta" required></textarea>
+                <br>
+                <button class="btn btn-primary" [disabled]="" type="submit">Crear</button>
+                <br>
+            </form>
         </div>
     </main>
     <h1>Apuestas por persona</h1>

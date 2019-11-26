@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class BetquezService {
 
 
-  baseUri:string = environment.serverApi;
+  baseUri:string = environment.serverApi+"/betquez";
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -28,7 +28,7 @@ export class BetquezService {
 
   // Get all Apuestas
   getApuestas() {
-    return this.http.get(`${this.baseUri}`);
+    return this.http.get(`${this.baseUri}/todas`);
   }
 
 
@@ -51,6 +51,15 @@ export class BetquezService {
       }),
       catchError(this.errorMgmt)
     )
+  }
+
+  validarPass(id,pass): Observable<any> {
+    let url = `${this.baseUri}/validarPass/${id}`;
+    let data = {pass: pass};
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
   }
 
   // Update Apuesta

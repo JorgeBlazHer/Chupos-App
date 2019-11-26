@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApuestasComponent } from './components/apuestas/apuestas.component';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { ApiService } from './service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BetquezComponent } from './components/betquez/betquez.component';
@@ -15,9 +15,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: ApuestasComponent},
-  { path: 'betquez', component: BetquezComponent},
-  { path: 'betquez/:id', component: BetquezApuestaComponent}
+  { path: '', pathMatch: 'full', component: ApuestasComponent },
+  { path: 'betquez', component: BetquezComponent },
+  { path: 'betquez/:id', component: BetquezApuestaComponent }
 ];
 
 
@@ -34,7 +34,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+  ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService, BetquezService],
   bootstrap: [AppComponent]

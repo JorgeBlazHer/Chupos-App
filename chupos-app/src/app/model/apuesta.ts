@@ -27,5 +27,5 @@ export class ApuestaPP{
     descripcion: String;
     FechaFin: Date;
     fin: boolean;
-    ganadaPor: String;
+    ganadaPor: string;
 }

@@ -4,13 +4,12 @@ const apuestaRoute = express.Router();
 
 // Apuesta model
 let Apuesta = require('../database/models/apuesta');
-let ApuestaGlobal = require('../database/models/apuesta');
+let ApuestaGlobal = require('../database/models/apuestaGlobal');
 
 // Add Apuesta
 apuestaRoute.route('/create').post((req, res, next) => {
     Apuesta.create(req.body, (error, data) => {
         if (error) {
-            
             console.log(error);
             res.status(404).json(error);
         } else {
@@ -144,6 +143,19 @@ apuestaRoute.route('/betquez/delete/:id').delete((req, res, next) => {
 
 
 // Get All Apuestas
+apuestaRoute.route('/betquez/todas').get((req, res) => {
+    ApuestaGlobal.find({ }, (error, data) => {
+        if (error) {
+            res.status(404).json(error);
+        } else {
+            console.log(data);
+            res.json(data)
+        }
+    })
+})
+
+
+// Get All Apuestas
 apuestaRoute.route('/betquez/finalizadas').get((req, res) => {
     ApuestaGlobal.find({ fin: true }, (error, data) => {
         if (error) {
@@ -182,6 +194,24 @@ apuestaRoute.route('/betquez/read/:id').get((req, res) => {
 
 apuestaRoute.route('/validarPass/:id').post((req, res) => {
     Apuesta.findById(req.params.id, (error, data) => {
+        if (error) {
+            res.status(404).json(error);
+        } else {
+            console.log('Validarrrrr ',req.body);
+            
+            if(req.body.pass===data.pass){
+                res.status(200).json({bien: "OK"});
+            }
+            else{
+                res.status(422).json({error: "Contraseña mal"});
+            }
+        }
+    })
+})
+
+
+apuestaRoute.route('/betquez/validarPass/:id').post((req, res) => {
+    ApuestaGlobal.findById(req.params.id, (error, data) => {
         if (error) {
             res.status(404).json(error);
         } else {

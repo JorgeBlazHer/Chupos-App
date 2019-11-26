@@ -42,7 +42,6 @@ export class ApuestasComponent implements OnInit {
   }
 
   cerrar(i) {
-
     this.apiService.validarPass(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i].passCerrar).subscribe(
       (res) => {
         this.apuestasAbiertas[i].fin = true;
@@ -61,8 +60,6 @@ export class ApuestasComponent implements OnInit {
         console.log(error);
         alert("Contraseña mal.")
       });
-
-
   }
 
   pagar(i) {
@@ -107,7 +104,7 @@ export class ApuestasComponent implements OnInit {
       !this.apuestaForm.controls.pass.invalid &&
       !this.apuestaForm.controls.pass2.invalid;
   }
-
+  
   contrasenasIguales() {
     return this.apuestaForm.controls.pass.value === this.apuestaForm.controls.pass2.value;
   }

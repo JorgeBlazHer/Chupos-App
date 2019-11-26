@@ -19,7 +19,7 @@ export class BetquezComponent implements OnInit {
 
   ngOnInit() {
     this.mainForm();
-    this.apiService.getApuestasActivas().subscribe(
+    this.apiService.getApuestas().subscribe(
       (res) => {
         this.apuestasAbiertas = res;
         console.log(this.apuestasAbiertas);
