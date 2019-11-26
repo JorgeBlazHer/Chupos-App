@@ -31,6 +31,20 @@ app.use(express.static(path.join(__dirname, './dist/chupos-app')));
 app.use('/', express.static(path.join(__dirname, './dist/chupos-app')));
 app.use('/api', employeeRoute)
 
+
+
+
+
+const router = express.Router();
+
+// rewrite virtual urls to angular app to enable refreshing of internal pages
+router.get('*', function (req, res, next) {
+    res.sendFile(path.resolve('./dist/chupos-app/index.html'));
+});
+
+app.use(router);
+
+
 // Create port
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {

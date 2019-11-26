@@ -102,9 +102,10 @@ apuestaRoute.route('/betquez/create').post((req, res, next) => {
             console.log(error);
             res.status(404).json(error);
         } else {
+            data.pass="";
             res.json(data);
         }
-    }).select("-pass")
+    })
 });
 
 
@@ -144,7 +145,6 @@ apuestaRoute.route('/betquez/todas').get((req, res) => {
         if (error) {
             res.status(404).json(error);
         } else {
-            console.log(data);
             res.json(data)
         }
     }).select("-pass")
@@ -157,7 +157,6 @@ apuestaRoute.route('/betquez/finalizadas').get((req, res) => {
         if (error) {
             res.status(404).json(error);
         } else {
-            console.log(data);
             res.json(data)
         }
     }).select("-pass")
