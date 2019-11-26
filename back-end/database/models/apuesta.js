@@ -81,4 +81,3 @@ let ApuestaGlobal = new Schema({
 });
 
 module.exports = mongoose.model('Apuesta', Apuesta)
-module.exports = mongoose.model('ApuestaGlobal', ApuestaGlobal)

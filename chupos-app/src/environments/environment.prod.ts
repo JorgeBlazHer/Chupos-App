@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverApi: 'https://chupos-app.herokuapp.com/api'
 };

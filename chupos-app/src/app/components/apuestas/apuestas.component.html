@@ -102,7 +102,7 @@
                     <td>{{ap.actor1}}</td>
                     <td>{{ap.actor2}}</td>
                     <td>{{ap.descripcion}}</td>
-                    <td>{{ap.fechaFin | date:fullDate}}</td>
+                    <td>{{ap.fechaFin | date:'d MMMM y'}}</td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -126,11 +126,6 @@
         </table>
     </div>
 
-
-
-
-
-
     <h1>Apuestas cerradas</h1>
     <div class="table-responsive">
         <table class="table ">
@@ -151,7 +146,7 @@
                     <td>{{ap.actor2}}</td>
                     <td>{{ap.descripcion}}</td>
                     <td>{{ap.ganadoPor}}</td>
-                    <td>{{ap.fechaFin | date:fullDate}}</td>
+                    <td>{{ap.fechaFin | date:'d MMMM y'}}</td>
                     <td><button [disabled]="ap.pagada" (click)="pagar(u)" class="btn btn-success">Pagar</button></td>
                     <td>
                         <div *ngIf="!ap.pagada; else pagadito">

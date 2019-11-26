@@ -4,7 +4,7 @@
             <h1>Apuesta</h1>
             <h3>{{apuesta.descripcion}}</h3>
             <div *ngIf="!apuesta.fin">
-                <h4>Acaba: {{apuesta.fechaFin | date:fullDate}}</h4>
+                <h4>Acaba: {{apuesta.FechaFin | date:'d MMMM y'}}</h4>
                 <form [formGroup]=" apuestaForm" (ngSubmit)="onSubmit()">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">

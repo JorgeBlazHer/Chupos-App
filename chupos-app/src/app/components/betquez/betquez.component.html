@@ -65,7 +65,7 @@
             <tbody>
                 <tr *ngFor="let ap of apuestasAbiertas; let i=index">
                     <td>{{ap.descripcion}}</td>
-                    <td>{{ap.fechaFin | date:fullDate}}</td>
+                    <td>{{ap.fechaFin | date:'d MMMM y'}}</td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-primary" type="button" [routerLink]="['/betquez', ap._id]">

@@ -25,6 +25,7 @@ export class ApuestaPP{
     _id: String;
     apuestas: [Persona];
     descripcion: String;
-    FechaFin: String;
+    FechaFin: Date;
     fin: boolean;
+    ganadaPor: String;
 }

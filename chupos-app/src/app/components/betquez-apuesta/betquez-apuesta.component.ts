@@ -60,4 +60,9 @@ export class BetquezApuestaComponent implements OnInit {
       });
   }
 
+
+  cerrar(){
+    
+  }
+
 }

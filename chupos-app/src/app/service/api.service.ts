@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 
 
@@ -10,9 +11,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class ApiService {
 
-
-  baseUri:string = 'https://chupos-app.herokuapp.com/api';
-  //baseUri:string = 'http://localhost:4000/api';
+  baseUri:string = environment.serverApi;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -66,6 +65,16 @@ export class ApiService {
     return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
+  }
+
+
+  validarPass(id,pass): Observable<any> {
+    let url = `${this.baseUri}/validarPass/${id}`;
+    let data = {pass: pass};
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
   }
 
   // Error handling 

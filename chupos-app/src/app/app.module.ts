@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BetquezComponent } from './components/betquez/betquez.component';
 import { BetquezService } from './service/betquez.service';
 import { BetquezApuestaComponent } from './components/betquez-apuesta/betquez-apuesta.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: ApuestasComponent},
@@ -31,7 +33,8 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService, BetquezService],
   bootstrap: [AppComponent]

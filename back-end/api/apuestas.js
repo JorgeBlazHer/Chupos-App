@@ -14,10 +14,11 @@ apuestaRoute.route('/create').post((req, res, next) => {
             console.log(error);
             res.status(404).json(error);
         } else {
-            console.log(req.body);
+            console.log(data);
+            data.pass="";
             res.json(data);
         }
-    })
+    }).select("-pass")
 });
 
 // Get All Apuestas
@@ -27,9 +28,10 @@ apuestaRoute.route('/').get((req, res) => {
         if (error) {
             res.status(404).json(error);
         } else {
+            data.pass="";
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -41,7 +43,7 @@ apuestaRoute.route('/finalizadas').get((req, res) => {
         } else {
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 // Get All Apuestas
@@ -52,7 +54,7 @@ apuestaRoute.route('/noFinalizadas').get((req, res) => {
         } else {
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 // Get single apuesta
@@ -63,7 +65,7 @@ apuestaRoute.route('/read/:id').get((req, res) => {
         } else {
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -79,7 +81,7 @@ apuestaRoute.route('/update/:id').put((req, res, next) => {
             res.json(data)
             console.log('Data updated successfully')
         }
-    })
+    }).select("-pass")
 })
 
 // Delete apuesta
@@ -92,7 +94,7 @@ apuestaRoute.route('/delete/:id').delete((req, res, next) => {
                 msg: data
             })
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -176,6 +178,24 @@ apuestaRoute.route('/betquez/read/:id').get((req, res) => {
     })
 })
 
+
+
+apuestaRoute.route('/validarPass/:id').post((req, res) => {
+    Apuesta.findById(req.params.id, (error, data) => {
+        if (error) {
+            res.status(404).json(error);
+        } else {
+            console.log('Validarrrrr ',req.body);
+            
+            if(req.body.pass===data.pass){
+                res.status(200).json({bien: "OK"});
+            }
+            else{
+                res.status(422).json({error: "Contraseña mal"});
+            }
+        }
+    })
+})
 
 
 

@@ -26,6 +26,7 @@ export class ApuestasComponent implements OnInit {
     this.apiService.getApuestasActivas().subscribe(
       (res) => {
         this.apuestasAbiertas = res;
+        console.log(res);
 
       }, (error) => {
         console.log(error);
@@ -41,38 +42,47 @@ export class ApuestasComponent implements OnInit {
   }
 
   cerrar(i) {
-    if (this.apuestasAbiertas[i].passCerrar === this.apuestasAbiertas[i].pass) {
-      this.apuestasAbiertas[i].fin = true;
-      this.apiService.updateApuesta(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i]).subscribe(
-        (res) => {
-          this.apuestasAbiertas = res;
-          this.ngOnInit();
 
-        }, (error) => {
-          console.log(error);
-        });
+    this.apiService.validarPass(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i].passCerrar).subscribe(
+      (res) => {
+        this.apuestasAbiertas[i].fin = true;
+        this.apiService.updateApuesta(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i]).subscribe(
+          (res) => {
+            this.apuestasAbiertas = res;
+            this.ngOnInit();
 
-    }
-    else {
-      alert("Contraseña mal.")
-    }
+          }, (error) => {
+            console.log(error);
+          });
+        this.apuestasAbiertas = res;
+        this.ngOnInit();
+
+      }, (error) => {
+        console.log(error);
+        alert("Contraseña mal.")
+      });
+
 
   }
 
   pagar(i) {
-    if (this.apuestasCerradas[i].passPagar === this.apuestasCerradas[i].pass) {
-      this.apuestasCerradas[i].pagada = true;
-      this.apiService.updateApuesta(this.apuestasCerradas[i]._id, this.apuestasCerradas[i]).subscribe(
-        (res) => {
-          this.ngOnInit();
+    this.apiService.validarPass(this.apuestasAbiertas[i]._id, this.apuestasAbiertas[i].passCerrar).subscribe(
+      (res) => {
+        this.apuestasCerradas[i].pagada = true;
+        this.apiService.updateApuesta(this.apuestasCerradas[i]._id, this.apuestasCerradas[i]).subscribe(
+          (res) => {
+            this.ngOnInit();
 
-        }, (error) => {
-          console.log(error);
-        });
-    }
-    else{
-      alert("Contraseña mal.")
-    }
+          }, (error) => {
+            console.log(error);
+          });
+        this.apuestasAbiertas = res;
+        this.ngOnInit();
+
+      }, (error) => {
+        console.log(error);
+        alert("Contraseña mal.")
+      });
   }
 
 
@@ -98,8 +108,8 @@ export class ApuestasComponent implements OnInit {
       !this.apuestaForm.controls.pass2.invalid;
   }
 
-  contrasenasIguales(){
-    return this.apuestaForm.controls.pass.value===this.apuestaForm.controls.pass2.value;
+  contrasenasIguales() {
+    return this.apuestaForm.controls.pass.value === this.apuestaForm.controls.pass2.value;
   }
 
   onSubmit() {
