@@ -1,4 +1,10 @@
-module.exports = {
-    db: 'mongodb+srv://jorge:pppp@cluster0-azrts.gcp.mongodb.net/test?retryWrites=true&w=majority'
-    //db: 'mongodb://localhost:27017/chupos'
+if(process.env.MONGO){
+  module.exports = {
+    db: process.env.MONGO
   };
+}
+else{
+  module.exports = {
+    db: 'mongodb://localhost:27017/chupos'
+  };
+}
