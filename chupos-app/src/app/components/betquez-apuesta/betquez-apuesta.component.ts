@@ -29,7 +29,6 @@ export class BetquezApuestaComponent implements OnInit {
     this.apiService.getApuesta(this.id).subscribe(
       (res) => {
         this.apuesta = res;
-        console.log(res);
       }, (error) => {
         console.log(error);
       });

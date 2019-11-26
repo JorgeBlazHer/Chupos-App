@@ -26,7 +26,7 @@ export class ApuestasComponent implements OnInit {
     this.apiService.getApuestasActivas().subscribe(
       (res) => {
         this.apuestasAbiertas = res;
-        console.log(res);
+
 
       }, (error) => {
         console.log(error);

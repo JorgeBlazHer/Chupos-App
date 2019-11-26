@@ -13,7 +13,6 @@ apuestaRoute.route('/create').post((req, res, next) => {
             console.log(error);
             res.status(404).json(error);
         } else {
-            console.log(data);
             data.pass="";
             res.json(data);
         }
@@ -22,7 +21,6 @@ apuestaRoute.route('/create').post((req, res, next) => {
 
 // Get All Apuestas
 apuestaRoute.route('/').get((req, res) => {
-    console.log("llego");
     Apuesta.find((error, data) => {
         if (error) {
             res.status(404).json(error);
@@ -78,7 +76,6 @@ apuestaRoute.route('/update/:id').put((req, res, next) => {
             console.log(error)
         } else {
             res.json(data)
-            console.log('Data updated successfully')
         }
     }).select("-pass")
 })
@@ -107,7 +104,7 @@ apuestaRoute.route('/betquez/create').post((req, res, next) => {
         } else {
             res.json(data);
         }
-    })
+    }).select("-pass")
 });
 
 
@@ -121,9 +118,8 @@ apuestaRoute.route('/betquez/update/:id').put((req, res, next) => {
             console.log(error)
         } else {
             res.json(data)
-            console.log('Data updated successfully')
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -138,7 +134,7 @@ apuestaRoute.route('/betquez/delete/:id').delete((req, res, next) => {
                 msg: data
             })
         }
-    })
+    }).select("-pass")
 });
 
 
@@ -151,7 +147,7 @@ apuestaRoute.route('/betquez/todas').get((req, res) => {
             console.log(data);
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -164,7 +160,7 @@ apuestaRoute.route('/betquez/finalizadas').get((req, res) => {
             console.log(data);
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 // Get All Apuestas
@@ -175,7 +171,7 @@ apuestaRoute.route('/betquez/noFinalizadas').get((req, res) => {
         } else {
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -187,7 +183,7 @@ apuestaRoute.route('/betquez/read/:id').get((req, res) => {
         } else {
             res.json(data)
         }
-    })
+    }).select("-pass")
 })
 
 
@@ -197,8 +193,6 @@ apuestaRoute.route('/validarPass/:id').post((req, res) => {
         if (error) {
             res.status(404).json(error);
         } else {
-            console.log('Validarrrrr ',req.body);
-            
             if(req.body.pass===data.pass){
                 res.status(200).json({bien: "OK"});
             }
@@ -215,8 +209,6 @@ apuestaRoute.route('/betquez/validarPass/:id').post((req, res) => {
         if (error) {
             res.status(404).json(error);
         } else {
-            console.log('Validarrrrr ',req.body);
-            
             if(req.body.pass===data.pass){
                 res.status(200).json({bien: "OK"});
             }
