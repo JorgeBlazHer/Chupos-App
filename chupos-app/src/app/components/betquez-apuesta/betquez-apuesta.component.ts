@@ -82,5 +82,8 @@ export class BetquezApuestaComponent implements OnInit {
         alert("Contraseña mal.")
       });
   }
+  validarAdd(){
+    return this.apuestaForm.controls.persona.value!="" && this.apuestaForm.controls.descripcion.value!="";
+  }
 
 }
