@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { FormGroup, ReactiveFormsModule, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ApiService } from './../../service/api.service';
 
 

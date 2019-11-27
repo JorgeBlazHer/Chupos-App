@@ -1,7 +1,7 @@
 <div class="container">
     <main role="main" class="container">
         <div class="jumbotron">
-            <h1>Generar apuesta</h1>
+            <h1 id="titulo">Generar apuesta</h1>
             <form [formGroup]="apuestaForm" (ngSubmit)="onSubmit()"
                 oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
                 <div class="form-row">

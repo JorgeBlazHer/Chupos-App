@@ -26,10 +26,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('chupos-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('chupos-app app is running!');
-  });
 });

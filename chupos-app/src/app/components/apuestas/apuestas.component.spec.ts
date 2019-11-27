@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApuestasComponent } from './apuestas.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ApiService } from 'src/app/service/api.service';
 
 describe('ApuestasComponent', () => {
   let component: ApuestasComponent;
@@ -8,7 +12,16 @@ describe('ApuestasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApuestasComponent ]
+      declarations: [ ApuestasComponent ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([]),
+        HttpClientTestingModule
+      ],
+      providers:[
+        ApiService
+      ]
     })
     .compileComponents();
   }));
@@ -22,4 +35,5 @@ describe('ApuestasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
